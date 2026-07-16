@@ -93,8 +93,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Speed
-  m_BlendParameterY: Strafe
+  m_BlendParameter: Strafe
+  m_BlendParameterY: Speed
   m_MinThreshold: 0
   m_MaxThreshold: 0.25
   m_UseAutomaticThresholds: 1
