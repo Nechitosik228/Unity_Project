@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57065005408b1504eaa65cc45b7206c2, type: 3}
   m_Name: New Enemy Stats
   m_EditorClassIdentifier: Assembly-CSharp::Script
+  health: 5
+  speed: 2
