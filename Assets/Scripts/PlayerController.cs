@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _runSpeed = 5f;
 
     private bool _isRunning;
+    private bool _isWalkingBackwards;
     private float _cordz;
     private float _cordx;
     private Vector3 _moveVector;
@@ -17,12 +18,14 @@ public class PlayerController : MonoBehaviour
     {
         MyInputManager.OnMovePressed += ReadMoveInput;
         MyInputManager.OnSpacePressed += PlayAnimation;
+        MyInputManager.OnShiftPressed += ReadShiftInput;
     }
 
     private void OnDisable()
     {
         MyInputManager.OnSpacePressed -= PlayAnimation;
         MyInputManager.OnMovePressed -= ReadMoveInput;
+        MyInputManager.OnShiftPressed += ReadShiftInput;
     }
 
     private void ReadMoveInput(Vector2 inputVector)
@@ -33,9 +36,21 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        if (_cordz <= 0) _isRunning = false;
+        float currentSpeed = _isRunning ? _runSpeed : _walkSpeed;
         _moveVector = transform.right * _cordx + transform.forward * _cordz;
-        _moveVector *= _walkSpeed * Time.fixedDeltaTime;
+        _moveVector *= currentSpeed * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_moveVector + _rigidbody.position);
+
+        if (animator != null)
+        {
+            bool IsMoving = _cordx != 0 || _cordz != 0;
+
+            if (_cordz < 0) _isWalkingBackwards = true;
+            else if (_cordz >= 0) _isWalkingBackwards = false;
+            animator.SetBool("run", IsMoving && _isRunning);
+            animator.SetBool("backwards", IsMoving && _isWalkingBackwards);
+        }
     }
 
     private void FixedUpdate()
@@ -46,6 +61,11 @@ public class PlayerController : MonoBehaviour
     private void PlayAnimation()
     {
         Debug.Log("asdkjhdakjhadkj");
+    }
+
+    private void ReadShiftInput(bool isPressed)
+    {
+        if (_cordz >= 0) _isRunning = isPressed;
     }
 
 
