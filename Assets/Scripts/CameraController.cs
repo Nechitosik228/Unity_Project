@@ -17,7 +17,6 @@ public class CameraController : MonoBehaviour
         maincamera.transform.rotation = point.rotation;
     }
 
-    
     void Update()
     {
         MoveCamera();

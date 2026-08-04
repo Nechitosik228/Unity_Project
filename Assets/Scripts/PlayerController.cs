@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _runSpeed = 5f;
 
     private bool _isRunning;
-    private bool _isWalkingBackwards;
     private float _cordz;
     private float _cordx;
     private Vector3 _moveVector;
@@ -41,21 +41,16 @@ public class PlayerController : MonoBehaviour
         _moveVector = transform.right * _cordx + transform.forward * _cordz;
         _moveVector *= currentSpeed * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_moveVector + _rigidbody.position);
-
-        if (animator != null)
-        {
-            bool IsMoving = _cordx != 0 || _cordz != 0;
-
-            if (_cordz < 0) _isWalkingBackwards = true;
-            else if (_cordz >= 0) _isWalkingBackwards = false;
-            animator.SetBool("run", IsMoving && _isRunning);
-            animator.SetBool("backwards", IsMoving && _isWalkingBackwards);
-        }
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void Update()
+    {
+        DoAnim();
     }
 
     private void PlayAnimation()
@@ -68,7 +63,17 @@ public class PlayerController : MonoBehaviour
         if (_cordz >= 0) _isRunning = isPressed;
     }
 
-
+    private void DoAnim()
+    {
+        if (animator != null)
+        {
+            bool IsMoving = _cordx != 0 || _cordz != 0;
+            animator.SetBool("run", IsMoving && _isRunning);
+            animator.SetFloat("Speed", _isRunning ? _runSpeed : _walkSpeed);
+            animator.SetFloat("CordZ", _cordz);
+            animator.SetFloat("Strafe", _cordx);
+        }
+    }
 
 
     //private void Update()
