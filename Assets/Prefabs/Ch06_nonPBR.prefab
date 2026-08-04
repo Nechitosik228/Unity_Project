@@ -115,7 +115,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 3787893895990758426}
   _walkSpeed: 2
   _runSpeed: 5
-  _smoothForce: 8
 --- !u!95 &8814472115271713225 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: dbec88a161b4fe54e96b544108883bd6, type: 3}
