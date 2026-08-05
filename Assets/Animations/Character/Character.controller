@@ -63,7 +63,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: CordZ
+    m_ConditionEvent: Speed
     m_EventTreshold: 0.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2848885397330383146}
@@ -90,25 +90,25 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1772090954342645268}
-    m_Position: {x: 350, y: -70, z: 0}
+    m_Position: {x: 230, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2848885397330383146}
-    m_Position: {x: 406.46976, y: 134.90005, z: 0}
+    m_Position: {x: 130, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8202494559599192790}
     m_Position: {x: 550, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9122429241473096935}
-    m_Position: {x: 470, y: 310, z: 0}
+    m_Position: {x: 340, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8988579637537356580}
     m_Position: {x: 760, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 623416397891111963}
-    m_Position: {x: 820, y: 270, z: 0}
+    m_Position: {x: 390, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 244918078496924586}
-    m_Position: {x: 1150, y: 40, z: 0}
+    m_Position: {x: 590, y: 130, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 4469544933328708655}
@@ -118,10 +118,11 @@ AnimatorStateMachine:
   - {fileID: -5698705874089963363}
   m_EntryTransitions:
   - {fileID: 1679278223058106803}
+  - {fileID: -2068389067678577839}
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 660, y: 120, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_AnyStatePosition: {x: 440, y: 110, z: 0}
+  m_EntryPosition: {x: 60, y: 120, z: 0}
   m_ExitPosition: {x: 50, y: 70, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 2848885397330383146}
@@ -154,9 +155,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
     m_EventTreshold: 3
-  - m_ConditionMode: 3
-    m_ConditionEvent: CordZ
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 244918078496924586}
   m_Solo: 0
@@ -246,6 +244,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1109 &-2068389067678577839
+AnimatorTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 2848885397330383146}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 1
 --- !u!206 &-1377658768746595717
 BlendTree:
   m_ObjectHideFlags: 1
@@ -338,12 +350,6 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: run
     m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: CordZ
-    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -565,7 +571,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: CordZ
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9122429241473096935}
@@ -590,7 +596,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: CordZ
+    m_ConditionEvent: Speed
     m_EventTreshold: -0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2848885397330383146}

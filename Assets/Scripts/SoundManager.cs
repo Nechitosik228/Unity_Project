@@ -8,16 +8,16 @@ public class SoundManager : MonoBehaviour
 
     private void OnEnable()
     {
-        MyInputManager.OnSpacePressed += PlayAudio;
+        MyInputManager.OnAttackPressed += PlayAudio;
         MyInputManager.OnMovePressed += CheckForMovement;
     }
 
     private void OnDisable()
     {
-        MyInputManager.OnSpacePressed -= PlayAudio;
+        MyInputManager.OnAttackPressed -= PlayAudio;
         MyInputManager.OnMovePressed -= CheckForMovement;
     }
-    private void PlayAudio()
+    private void PlayAudio(bool isPressed)
     {
         if (!sound1.isPlaying)
         {

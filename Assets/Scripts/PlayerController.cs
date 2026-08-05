@@ -14,18 +14,24 @@ public class PlayerController : MonoBehaviour
     private float _cordx;
     private Vector3 _moveVector;
 
+
+    [SerializeField] private Transform _shotPoint;
+    private float _shotRange = 40f;
+
     private void OnEnable()
     {
         MyInputManager.OnMovePressed += ReadMoveInput;
         MyInputManager.OnSpacePressed += PlayAnimation;
         MyInputManager.OnShiftPressed += ReadShiftInput;
+        MyInputManager.OnAttackPressed += ShotWeapon;
     }
 
     private void OnDisable()
     {
         MyInputManager.OnSpacePressed -= PlayAnimation;
         MyInputManager.OnMovePressed -= ReadMoveInput;
-        MyInputManager.OnShiftPressed += ReadShiftInput;
+        MyInputManager.OnShiftPressed -= ReadShiftInput;
+        MyInputManager.OnAttackPressed -= ShotWeapon;
     }
 
     private void ReadMoveInput(Vector2 inputVector)
@@ -65,13 +71,26 @@ public class PlayerController : MonoBehaviour
 
     private void DoAnim()
     {
+        float currentSpeed = _isRunning ? _runSpeed : _walkSpeed;
         if (animator != null)
         {
             bool IsMoving = _cordx != 0 || _cordz != 0;
             animator.SetBool("run", IsMoving && _isRunning);
-            animator.SetFloat("Speed", _isRunning ? _runSpeed : _walkSpeed);
-            animator.SetFloat("CordZ", _cordz);
+            animator.SetFloat("Speed", _cordz * currentSpeed);
             animator.SetFloat("Strafe", _cordx);
+        }
+    }
+
+    private void ShotWeapon(bool isPressed)
+    {
+        if (!isPressed)
+        {
+            return;
+        }
+        RaycastHit hit;
+        if (Physics.Raycast(_shotPoint.position, _shotPoint.forward, out hit, _shotRange))
+        {
+            Debug.Log(hit.collider.gameObject.name);
         }
     }
 
