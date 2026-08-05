@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _runSpeed = 5f;
 
     private bool _isRunning;
+    private bool _isSatDown;
     private float _cordz;
     private float _cordx;
     private Vector3 _moveVector;
@@ -74,8 +75,17 @@ public class PlayerController : MonoBehaviour
         float currentSpeed = _isRunning ? _runSpeed : _walkSpeed;
         if (animator != null)
         {
+            if (Input.GetKeyDown(KeyCode.E) && !_isSatDown)
+            {
+                _isSatDown = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && _isSatDown)
+            {
+                _isSatDown = false;
+            }
             bool IsMoving = _cordx != 0 || _cordz != 0;
             animator.SetBool("run", IsMoving && _isRunning);
+            animator.SetBool("SitDown", _isSatDown);
             animator.SetFloat("Speed", _cordz * currentSpeed);
             animator.SetFloat("Strafe", _cordx);
         }
