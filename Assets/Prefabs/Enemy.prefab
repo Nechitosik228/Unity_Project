@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2603304751253549237}
   - component: {fileID: 7449626154746189036}
   - component: {fileID: 3838951600185799777}
+  - component: {fileID: -341078915769208153}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -81,10 +82,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5346458
-  m_Height: 2.3128886
+  m_Radius: 0.8502664
+  m_Height: 2.2580237
   m_Direction: 1
-  m_Center: {x: 0, y: -0.6564443, z: -0.098445415}
+  m_Center: {x: 0, y: 1.0875905, z: 0.21717519}
 --- !u!114 &3838951600185799777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +98,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1e21270506a89428a2a5de7df956df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+--- !u!195 &-341078915769208153
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888013150213681851}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &5544572023784276273
 PrefabInstance:
   m_ObjectHideFlags: 0

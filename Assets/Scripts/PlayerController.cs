@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private Transform _shotPoint;
-    private float _shotRange = 40f;
+    [SerializeField] private float _shotRange = 40f;
 
     private void OnEnable()
     {
@@ -97,12 +97,22 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        #if UNITY_EDITOR
+        DrawRay();
+        #endif
         RaycastHit hit;
         if (Physics.Raycast(_shotPoint.position, _shotPoint.forward, out hit, _shotRange))
         {
             Debug.Log(hit.collider.gameObject.name);
         }
     }
+
+    #if UNITY_EDITOR
+    private void DrawRay()
+    {
+        Debug.DrawRay(_shotPoint.position, _shotPoint.forward * _shotRange, Color.blue, 3f);
+    }
+    #endif
 
 
     //private void Update()
